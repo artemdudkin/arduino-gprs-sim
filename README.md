@@ -12,8 +12,7 @@ Uses his Makefile which compiles using system (not Arduino) compiler, tested on 
 make
 ./runtests
 ```
-
-### Resources:
+Resources:
 
 http://stackoverflow.com/questions/780819/how-can-i-unit-test-arduino-code
 
