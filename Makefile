@@ -4,11 +4,11 @@ SOURCES = test/runtests.cpp \
           test/mock/Arduino.cpp \
           test/mock/SoftwareSerial.cpp \
           test/mock/pgmspace.cpp \
-          lib/GprsSim.cpp 
+          GprsSim/GprsSim.cpp 
 
 OBJECTS := $(addsuffix .o, $(addprefix .build/, $(basename $(SOURCES))))
 DEPFILES := $(subst .o,.dep, $(subst .build/,.deps/, $(OBJECTS)))
-TESTCPPFLAGS = -D_TEST_ -Ilib -Itest -Iarduino
+TESTCPPFLAGS = -D_TEST_ -IGprsSim -Itest -Iarduino
 CPPDEPFLAGS = -MMD -MP -MF .deps/$(basename $<).dep
 RUNTESTS := $(if $(COMSPEC), runtests.exe, runtests)
 

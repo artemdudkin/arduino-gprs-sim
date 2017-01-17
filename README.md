@@ -1,10 +1,11 @@
 # arduino-gprs-sim
 Arduino lib for gsm modules (works with sim800 and sim900) 7k+0.3k.
 
+Can send http requests (work with SMS is under construction).
+
 ## Installation
 
-1. Create folder GprsSim under Arduino/library folder
-2. Copy files from lib/ to this new folder
+Copy folder GprsSim to Arduino/library folder.
 
 ## Usage
 
