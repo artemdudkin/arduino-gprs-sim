@@ -29,7 +29,7 @@ const char AT_CIPSTART[] PROGMEM = "AT+CIPSTART= \"TCP\",\"";
 const char AT_CIPSEND[] PROGMEM = "AT+CIPSEND";
 const char GET[] PROGMEM = "GET ";
 const char HTTP11[] PROGMEM = " HTTP/1.1\r\nHost: ";
-const char USER_AGENT[] PROGMEM = "\r\nUser-Agent: arduino-gsm-lib";
+const char USER_AGENT[] PROGMEM = "\r\nUser-Agent: arduino-gprs-sim";
 const char CON_CLOSE[] PROGMEM = "\r\nConnection: close\r\n\r\n";
 
 #define PMBUF_SIZE 30
@@ -167,6 +167,7 @@ int GprsSim::attachGPRS( const char *apn,
 
   if (ok==0) {
     //Start the task, based on the SIM card you are using, you need to know the APN, username and password for
+    //AT+CSTT= "<apn>","<login>","password" -> OK
     strcpy_P(pmbuf, AT_CSTT); strcpy_P(okbuf, OK);
     print(pmbuf); //"AT+CSTT= \""
     print(apn);
@@ -192,7 +193,9 @@ int GprsSim::attachGPRS( const char *apn,
 
 
 int GprsSim::checkGPRS()
-{
+{ //ok if AT+CIPSTATUS -> TCP CLOSED or IP GPRSACT or IP STATUS
+  //      and AT+CIFSR is not ERROR
+
   int ok = 0;
   strcpy_P(pmbuf, AT_CIPSTATUS); strcpy_P(okbuf, TCP_CLOSED);
   ok = cmd( pmbuf, 2000, 50, 0, okbuf) ? 0 : 1;//"AT+CIPSTATUS" -> TCP CLOSED
@@ -217,7 +220,8 @@ int GprsSim::http_get( const char *host,
 ){
   int ok = 0;
 
-   //Start the connection, TCP, domain name, port
+  //Start the connection, TCP, domain name, port
+  //"AT+CIPSTART= \"TCP\",<host>,<port> -> OK
   strcpy_P(pmbuf, AT_CIPSTART); strcpy_P(okbuf, OK);
   print(pmbuf); //"AT+CIPSTART= \"TCP\",\""
   print(host);
@@ -234,7 +238,11 @@ int GprsSim::http_get( const char *host,
   strcpy_P(pmbuf, AT_CIPSEND);
   if (ok==0) ok = cmd( pmbuf, 5000, 50, 0, ">", true, 3, 500) ? 0: 3;//"AT+CIPSEND"
 
-  if (ok==0) {
+  if (ok==0) { //Send
+               //  GET <url> HTTP/1.1
+               //  Host: <host>
+               //  User-Agent: arduino-gprs-sim
+               //  Connection: close
     strcpy_P(pmbuf, GET);
     print(pmbuf);//"GET "
     for(int i=0; i<URL_BUF_COUNT; i++) {
@@ -244,7 +252,7 @@ int GprsSim::http_get( const char *host,
     print(pmbuf);//" HTTP/1.1\r\nHost: "
     print(host);
     strcpy_P(pmbuf, USER_AGENT);
-    print(pmbuf);//"\r\nUser-Agent: arduino-gsm-lib"
+    print(pmbuf);//"\r\nUser-Agent: arduino-gprs-sim"
     strcpy_P(pmbuf, CON_CLOSE);
     print(pmbuf);//"\r\nConnection: close\r\n\r\n"
     println((char)0x1a);
@@ -272,8 +280,7 @@ int GprsSim::http_get( const char *host,
 
 
 int GprsSim::start()
-{
-  int gsm_state = init();
+{  int gsm_state = init();
   
   log(F("gsm:: state "));
   log(gsm_state);
