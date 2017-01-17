@@ -15,6 +15,8 @@
 #include "mock/Arduino.h"
 #include "mock/SoftwareSerial.h"
 #include "mock/pgmspace.h"
+#include <iostream>
+using namespace std;
 #endif
 
 typedef void (*VoidFunction) ();
@@ -23,7 +25,11 @@ class GprsSim
 {
   public:
     GprsSim(int pinRx, int pinTx, byte* buf, const int BUF_SIZE);
+    void setLog(bool);
+    void setDebug(bool);
     void setResponceCallback(VoidFunction cb);
+    void begin();
+        
     int init();
     int attachGPRS(const char *apn, const char *login, const char *password);
     int checkGPRS();
@@ -31,13 +37,15 @@ class GprsSim
     
     int start();
     int send( char host[], int port, char *url_buf[], const int URL_BUF_COUNT);
-    
   private:
     int _pinRx, _pinTx;
     SoftwareSerial _serial;    
     byte* _buf;
     int _BUF_SIZE;
-    VoidFunction _responce_cb;    
+    VoidFunction _responce_cb;
+    bool _log; 
+    bool _debug;
+    bool _began;    
     
     bool cmd(const char *AT_cmd_string, 
              const int cmd_timeout, const int cmd_char_timeout, const int cmd_ttfb, 

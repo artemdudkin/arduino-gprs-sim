@@ -1,4 +1,5 @@
 SOURCES = test/runtests.cpp \
+          test/assert.cpp \
           test/mock/fake_serial.cpp \
           test/mock/Arduino.cpp \
           test/mock/SoftwareSerial.cpp \
@@ -7,9 +8,9 @@ SOURCES = test/runtests.cpp \
 
 OBJECTS := $(addsuffix .o, $(addprefix .build/, $(basename $(SOURCES))))
 DEPFILES := $(subst .o,.dep, $(subst .build/,.deps/, $(OBJECTS)))
-TESTCPPFLAGS = -D_TEST_ -DGSM_LOG_ON -DGSM_DEBUG_ON -Ilib -Itest -Iarduino
+TESTCPPFLAGS = -D_TEST_ -Ilib -Itest -Iarduino
 CPPDEPFLAGS = -MMD -MP -MF .deps/$(basename $<).dep
-RUNTEST := $(if $(COMSPEC), runtest.exe, runtest)
+RUNTESTS := $(if $(COMSPEC), runtests.exe, runtests)
 
 all: runtests
 
@@ -22,6 +23,6 @@ runtests: $(OBJECTS)
 	$(CC) $(OBJECTS) -lstdc++ -o $@
 
 clean:
-	@rm -rf .deps/ .build/ $(RUNTEST)
+	@rm -rf .deps/ .build/ $(RUNTESTS)
 
 -include $(DEPFILES)

@@ -3,3 +3,4 @@ arduino
 .deps/
 runtests
 runtests.exe
+.DS_Store

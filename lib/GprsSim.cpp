@@ -6,6 +6,9 @@
 
 #include "GprsSim.h"
 
+//#define SUPRESS_DEBUG_MESSAGES
+//#define SUPRESS_LOG_MESSAGES
+
 const char AT[] PROGMEM = "AT";
 const char ATF[] PROGMEM = "AT&F";
 const char ATE0[] PROGMEM = "ATE0";
@@ -84,10 +87,23 @@ GprsSim::GprsSim(int pinRx, int pinTx, byte* buf, const int BUF_SIZE) : _serial(
   _BUF_SIZE    = BUF_SIZE;
   _responce_cb = NULL;
   
+  _log=true;
+  _debug=true;
+  _began=false;
+}
+
+void GprsSim::begin(){
+  _began=true;
   _serial.begin(9600);
   delay(500);
 }
 
+void GprsSim::setLog(bool value){
+  _log = value;
+}
+void GprsSim::setDebug(bool value){
+  _log = value;
+}
 
 void GprsSim::setResponceCallback(VoidFunction cb)
 {
@@ -97,6 +113,7 @@ void GprsSim::setResponceCallback(VoidFunction cb)
 
 int GprsSim::init() 
 {
+  if (!_began) begin();
   int ok = 0;
 
   //just test
@@ -395,9 +412,7 @@ bool GprsSim::cmd( const char *AT_cmd_string,
                const char *response_string
 ){
   _serial.listen();
-  
   println(AT_cmd_string);
-  
   return check_responce( cmd_timeout, cmd_char_timeout, cmd_ttfb, response_string);
 }
 
@@ -477,7 +492,7 @@ bool GprsSim::check_responce( const int cmd_timeout,
   while (
        ((cmd_ttfs <= 0) || (ttfs >= 0 || millis() - t_all < cmd_ttfs)) //check time to first symbol if present
     && (millis() - t_all < cmd_timeout)                               //check total time (timeout)
-    && ((t_char == 0) || (millis() - t_char < cmd_char_timeout))      //check time between chars (??? oh really?)
+    && ((t_char == 0) || (millis() - t_char < cmd_char_timeout))      //check time between chars
   ) {
     while (_serial.available() > 0) {
 
@@ -567,73 +582,73 @@ void GprsSim::println( const char c){
 
 void GprsSim::log( const char *msg)
 {
-  #ifdef GSM_LOG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_LOG_MESSAGES
+    if (_log) Serial.print(msg);
   #endif
 }
 
 void GprsSim::log( const __FlashStringHelper *msg){
-  #ifdef GSM_LOG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_LOG_MESSAGES
+    if (_log) Serial.print(msg);
   #endif
 }
 
 void GprsSim::log( const char msg)
 {
-  #ifdef GSM_LOG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_LOG_MESSAGES
+    if (_log) Serial.print(msg);
   #endif
 }
 
 void GprsSim::log( int msg)
 {
-  #ifdef GSM_LOG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_LOG_MESSAGES
+    if (_log) Serial.print(msg);
   #endif
 }
 
 void GprsSim::log( long msg)
 {
-  #ifdef GSM_LOG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_LOG_MESSAGES
+    if (_log) Serial.print(msg);
   #endif
 }
 
 
 void GprsSim::debug( const char *msg)
 {
-  #ifdef GSM_DEBUG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_DEBUG_MESSAGES
+    if (_debug) Serial.print(msg);
   #endif
 }
 
 void GprsSim::debug( const __FlashStringHelper *msg)
 {
-  #ifdef GSM_DEBUG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_DEBUG_MESSAGES
+    if (_debug) Serial.print(msg);  
   #endif
 }
 
 void GprsSim::debug( const char msg)
 {
-  #ifdef GSM_DEBUG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_DEBUG_MESSAGES
+    if (_debug) Serial.print(msg);  
   #endif
 }
 
 
 void GprsSim::debug( int msg)
 {
-  #ifdef GSM_DEBUG_ON
-    Serial.print(msg);
+  #ifndef SUPRESS_DEBUG_MESSAGES
+    if (_debug) Serial.print(msg);
   #endif
 }
 
 void GprsSim::debug( long msg)
 {
-  #ifdef GSM_DEBUG_ON
-    Serial.print(msg);
-  #endif
+  #ifndef SUPRESS_DEBUG_MESSAGES
+    if (_debug) Serial.print(msg);
+  #endif  
 }
 
 
