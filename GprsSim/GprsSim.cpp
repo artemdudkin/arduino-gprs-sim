@@ -6,8 +6,8 @@
 
 #include "GprsSim.h"
 
-//#define SUPRESS_DEBUG_MESSAGES
-//#define SUPRESS_LOG_MESSAGES
+//#define SUPRESS_DEBUG_MESSAGES //uncomment it for prod environment (i.e. when you do not need logs at Serial),
+//#define SUPRESS_LOG_MESSAGES   //and this will reduce size of compiled code by 1k aprox.
 
 const char AT[] PROGMEM = "AT";
 const char ATF[] PROGMEM = "AT&F";
