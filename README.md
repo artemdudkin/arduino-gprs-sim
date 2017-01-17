@@ -1,7 +1,7 @@
 # arduino-gprs-sim
 Arduino lib for gsm modules (works with sim800 and sim900) 8k+0.3k.
 
-Can send http requests (work with SMS is under construction).
+Can send http requests (only GET), work with SMS is under construction.
 
 ## Installation
 
