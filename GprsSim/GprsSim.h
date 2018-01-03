@@ -9,7 +9,7 @@
 
 #ifndef _TEST_
 #include <Arduino.h>
-#include <SoftwareSerial.h>
+#include "NeoSWSerial.h"
 #include <avr/pgmspace.h>
 #else
 #include "mock/Arduino.h"
@@ -39,7 +39,7 @@ class GprsSim
     int send( char host[], int port, char *url_buf[], const int URL_BUF_COUNT);
   private:
     int _pinRx, _pinTx;
-    SoftwareSerial _serial;    
+    NeoSWSerial _serial;    
     byte* _buf;
     int _BUF_SIZE;
     VoidFunction _responce_cb;
@@ -69,7 +69,6 @@ class GprsSim
     void println( const char c);
     void println( int c);
     void println( long c);
-
     
     void log( const char *msg);
     void log( const __FlashStringHelper *msg);
