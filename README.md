@@ -35,7 +35,7 @@ gs.send(host, port, urls, 2);
 
 ## Tests
 
-Want to run unit tests on development box (not Arduino), and it is possible - thanks to [smartthings-super-sprinker](https://github.com/mvgrimes/smartthings-super-sprinker) and [dsm2_tx](https://github.com/IronSavior/dsm2_tx).
+Want to run unit tests on development box (not Arduino), and it is possible - thanks to [mvgrimes](https://github.com/mvgrimes/smartthings-super-sprinker) and [IronSavior](https://github.com/IronSavior/dsm2_tx).
 
 (tested on MacOS)
 
