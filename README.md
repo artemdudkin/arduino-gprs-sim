@@ -35,10 +35,9 @@ gs.send(host, port, urls, 2);
 
 ## Tests
 
-Want to unit test on development box (not Arduino). Looked into numerous
-solutions. Liked approach of: https://github.com/IronSavior/dsm2_tx.
+Want to run unit tests on development box (not Arduino), and it is possible - thanks to [smartthings-super-sprinker](https://github.com/mvgrimes/smartthings-super-sprinker) and [dsm2_tx](https://github.com/IronSavior/dsm2_tx).
 
-Uses his Makefile which compiles using system (not Arduino) compiler, tested on MacOS.
+(tested on MacOS)
 
 ```sh
 make
@@ -47,6 +46,4 @@ make
 Resources:
 
 http://stackoverflow.com/questions/780819/how-can-i-unit-test-arduino-code
-
-https://github.com/mvgrimes/smartthings-super-sprinker
 
