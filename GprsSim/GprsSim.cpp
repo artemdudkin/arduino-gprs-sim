@@ -587,6 +587,22 @@ void GprsSim::println( const char c){
   debug(F("\r\n"));
 }
 
+void GprsSim::println( int i){
+  _serial.println(i);
+  
+  debug(F("<< "));
+  debug(i);
+  debug(F("\r\n"));
+}
+
+void GprsSim::println( long i){
+  _serial.println(i);
+  
+  debug(F("<< "));
+  debug(i);
+  debug(F("\r\n"));
+}
+
 void GprsSim::log( const char *msg)
 {
   #ifndef SUPRESS_LOG_MESSAGES
