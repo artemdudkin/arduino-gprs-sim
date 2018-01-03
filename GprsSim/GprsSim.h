@@ -67,6 +67,9 @@ class GprsSim
     void print( const char *msg);
     void println( const char *msg);
     void println( const char c);
+    void println( int c);
+    void println( long c);
+
     
     void log( const char *msg);
     void log( const __FlashStringHelper *msg);
