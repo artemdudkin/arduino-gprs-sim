@@ -6,10 +6,14 @@ Can send http requests (only GET), work with SMS is under construction.
 ## Installation
 
 Copy folder GprsSim to Arduino/library folder.
+You should have [NeoSWSerial](https://github.com/SlashDevin/NeoSWSerial) also.
 
 ## Usage
 
 ```cpp
+
+#include "NeoSWSerial.h"
+#include "GprsSim.h"
 
 #define BUF_SIZE 100
 byte buf[BUF_SIZE];
