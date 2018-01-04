@@ -24,14 +24,22 @@ char url[] = "/log?source=xyz&data=";
 char data[] = "123";
 char *urls[] = {url, data};
 
-GprsSim gs(5, 6, buf, BUF_SIZE); //will use pins 5 and 6 as RX and TX (with SoftwareSerial)
+GprsSim gs(5, 6, buf, BUF_SIZE); //will use pins 5 and 6 as RX and TX (with NeoSWSerial)
                                  //and buf as shared buffer to read data from gprs module 
 
 gs.start();
 
 gs.send(host, port, urls, 2);
 
-Serial.println((char*)buf);
+Serial.println((char*)buf); // print HTTP answer, something like
+                            //  
+                            //  HTTP/1.1 200 OK
+                            //  Date: Thu, 04 Jan 2018 10:47:01 GMT
+                            //  Connection: close
+                            //  Content-Length: 29
+                            //  
+                            //  {"resultCode":0,"count":6996}
+                            //  
 
 ```
 
