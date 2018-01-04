@@ -16,7 +16,7 @@ You should have [NeoSWSerial](https://github.com/SlashDevin/NeoSWSerial) also.
 #include "GprsSim.h"
 
 #define BUF_SIZE 100
-byte buf[BUF_SIZE];
+byte buf[BUF_SIZE]; // buffer for AT commands and module answers
 
 char host[] = "example.com";
 int port = 8080;
@@ -30,6 +30,8 @@ GprsSim gs(5, 6, buf, BUF_SIZE); //will use pins 5 and 6 as RX and TX (with Soft
 gs.start();
 
 gs.send(host, port, urls, 2);
+
+Serial.println((char*)buf);
 
 ```
 
