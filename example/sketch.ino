@@ -1,3 +1,11 @@
+//-----------------------------------------------------------------------------------------
+//
+// Simple scheme (look at scheme-gprs-sim800-example.png) to get data from temperature sensor 
+// via GPRS once a minute.
+//
+//-----------------------------------------------------------------------------------------
+
+
 #include "NeoSWSerial.h"
 #include "GprsSim.h"
 #include <OneWire.h>
