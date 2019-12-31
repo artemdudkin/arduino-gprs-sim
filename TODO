@@ -1,7 +1,7 @@
-test library.properties
-more docs (installation, about logs, about status, is request successfull)
-run tests at Windows
 add auto-tests on new commit
+test library.properties
+test tests at Linux/MacOS
+more docs (installation, about logs, about status, is request successfull)
 write real tests
 SMS send
 SMS recieve 
