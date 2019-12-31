@@ -4,7 +4,7 @@ SOURCES = test/runtests.cpp \
           test/mock/Arduino.cpp \
           test/mock/SoftwareSerial.cpp \
           test/mock/pgmspace.cpp \
-          GprsSim/GprsSim.cpp 
+          src/GprsSim.cpp 
 
 OBJECTS := $(addsuffix .o, $(addprefix .build/, $(basename $(SOURCES))))
 DEPFILES := $(subst .o,.dep, $(subst .build/,.deps/, $(OBJECTS)))
