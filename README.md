@@ -47,11 +47,11 @@ Serial.println((char*)buf); // print HTTP answer, something like
 
 Want to run unit tests on development box (not Arduino), and it is possible - thanks to [mvgrimes](https://github.com/mvgrimes/smartthings-super-sprinker) and [IronSavior](https://github.com/IronSavior/dsm2_tx).
 
-(tested on MacOS)
+(tested on mingw-w64 at win10)
 
 ```sh
 make
-./runtests
+./runtests.exe
 ```
 Resources:
 
