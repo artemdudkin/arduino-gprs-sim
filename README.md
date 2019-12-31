@@ -42,6 +42,7 @@ Serial.println((char*)buf); // print HTTP answer, something like
                             //  
 
 ```
+Also there are /example folder with sample schematics and sketch for ds18b20 temperature sensor sending measurements by sim800l. 
 
 ## Tests
 
