@@ -2,7 +2,7 @@ SOURCES = test/runtests.cpp \
           test/assert.cpp \
           test/mock/fake_serial.cpp \
           test/mock/Arduino.cpp \
-          test/mock/SoftwareSerial.cpp \
+          test/mock/NeoSWSerial.cpp \
           test/mock/pgmspace.cpp \
           src/GprsSim.cpp 
 
@@ -17,7 +17,7 @@ all: runtests
 .build/%.o: %.cpp
 	mkdir -p .deps/$(dir $<)
 	mkdir -p .build/$(dir $<)
-	$(COMPILE.cpp) $(TESTCPPFLAGS) $(CPPDEPFLAGS) -o $@ $<
+	$(COMPILE.cpp) $(TESTCPPFLAGS) $(CPPDEPFLAGS) -Wno-deprecated-declarations -o $@ $<
 
 runtests: $(OBJECTS)
 	$(CC) $(OBJECTS) -lstdc++ -o $@

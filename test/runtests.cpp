@@ -1,14 +1,14 @@
 #include "assert.h"
 #include "mock/Arduino.h"
-#include "mock/SoftwareSerial.h"
-#include "GprsSim.h"
-
+#include "mock/NeoSWSerial.h"
+#include "../src/GprsSim.h"
+#include <unistd.h>
 
 
 void test_millis() {
   unsigned long start = millis();
   int i=1;
-  while( millis() - start < 5000 ) {
+  while( millis() - start < 1000 ) {
     sleep(1);
     
     long ms = millis();
@@ -16,15 +16,14 @@ void test_millis() {
     i++;
   }
   unsigned long end = millis();
-  assert.less(5015, end-start);
+  assert.less(1015, end-start);
 }
-
 
 
 void test_delay() {
   unsigned long start = millis();
   int i=1;
-  while( millis() - start < 5000 ) {
+  while( millis() - start < 1000 ) {
     delay(250);
     
     long ms = millis();
@@ -33,13 +32,13 @@ void test_delay() {
     i++;
   }
   unsigned long end = millis();
-  assert.less(5015, end-start);  
+  assert.less(1015, end-start);  
 }
-
 
 
 #define XBUF_SIZE 30
 byte xbuf[XBUF_SIZE];
+
 
 void test_gprs_start_no_AT_answer() {
   GprsSim g(5, 6, xbuf, XBUF_SIZE);
@@ -47,11 +46,12 @@ void test_gprs_start_no_AT_answer() {
   assert.equal(-1, status);
 }
 
+
 void test_gprs_start_ok() {
-  SoftwareSerial::flow_add("AT", "ERR");
-  SoftwareSerial::flow_add("AT", "OK");  
-  SoftwareSerial::flow_add("AT&F", "OK");    
-  SoftwareSerial::flow_add("ATE0", "OK");    
+  NeoSWSerial::flow_add("AT", "ERR");
+  NeoSWSerial::flow_add("AT", "OK");  
+  NeoSWSerial::flow_add("AT&F", "OK");    
+  NeoSWSerial::flow_add("ATE0", "OK");    
 
   GprsSim g(5, 6, xbuf, XBUF_SIZE);
   int status = g.start();

@@ -10,10 +10,10 @@ typedef struct {
 
 #define SS_BUF_SIZE 64
 
-class SoftwareSerial
+class NeoSWSerial
 {
   public:
-    SoftwareSerial(int pinRx, int pinTx);
+    NeoSWSerial(int pinRx, int pinTx);
     
     void begin(int rate);
     

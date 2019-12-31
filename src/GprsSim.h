@@ -13,9 +13,10 @@
 #include <avr/pgmspace.h>
 #else
 #include "mock/Arduino.h"
-#include "mock/SoftwareSerial.h"
+#include "mock/NeoSWSerial.h"
 #include "mock/pgmspace.h"
 #include <iostream>
+#include <cstring>
 using namespace std;
 #endif
 
