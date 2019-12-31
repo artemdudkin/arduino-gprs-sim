@@ -1,7 +1,10 @@
 test library.properties
+more docs (installation, about logs, about status, is request successfull)
 run tests at Windows
 add auto-tests on new commit
-SMS
+write real tests
+SMS send
+SMS recieve 
 set APN etc.
 size?
 performance? (make waiting timings less)
