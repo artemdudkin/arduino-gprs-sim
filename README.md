@@ -5,7 +5,7 @@ Can send http requests (only GET), work with SMS is under construction.
 
 ## Installation
 
-Download ZIP from GitHub and then import it at Arduino IDE via Sketch > Include Library > Manage Libraries > Add .ZIP library.
+Download ZIP from GitHub and import it at Arduino IDE.
 You should have [NeoSWSerial](https://github.com/SlashDevin/NeoSWSerial) too.
 
 ## Usage
