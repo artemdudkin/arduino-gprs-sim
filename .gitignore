@@ -4,3 +4,4 @@ arduino
 runtests
 runtests.exe
 .DS_Store
+test/src

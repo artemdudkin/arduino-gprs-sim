@@ -42,6 +42,8 @@ byte xbuf[XBUF_SIZE];
 
 void test_gprs_start_no_AT_answer() {
   GprsSim g(5, 6, xbuf, XBUF_SIZE);
+  g.setLog(false);
+  g.setDebug(false);
   int status = g.start();
   assert.equal(-1, status);
 }
@@ -54,6 +56,8 @@ void test_gprs_start_ok() {
   NeoSWSerial::flow_add("ATE0", "OK");    
 
   GprsSim g(5, 6, xbuf, XBUF_SIZE);
+  g.setLog(false);
+  g.setDebug(false);
   int status = g.start();
   assert.equal(-1, status);
 }
@@ -61,7 +65,7 @@ void test_gprs_start_ok() {
 
 int main(int argc, char **argv){
   initialize_mock_arduino();
-  
+
   START( test_millis, "millis");
   START( test_delay,  "delay");
   START( test_gprs_start_no_AT_answer,  "gprs_start_no_AT_answer");

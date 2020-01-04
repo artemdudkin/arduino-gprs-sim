@@ -102,7 +102,7 @@ void GprsSim::setLog(bool value){
   _log = value;
 }
 void GprsSim::setDebug(bool value){
-  _log = value;
+  _debug = value;
 }
 
 void GprsSim::setResponceCallback(VoidFunction cb)

@@ -12,7 +12,7 @@ Assert::Assert() {
 void Assert::test_start(const char *name){
   if (test_time_start == 0){
     test_time_start = millis();
-    cout << "\r\n";
+//    cout << "\r\n"; // looks like it is not nessessary
   }
   current_test_ok = true;
   current_test_name = name;
@@ -20,7 +20,7 @@ void Assert::test_start(const char *name){
 
 void Assert::test_finish(){
   if (current_test_ok) { 
-    cout << " ok : " << current_test_name << "\r\n"; } else { cout << " failed : " << current_test_name << "\r\n"; 
+    cout << " [ok] " << current_test_name << "\r\n"; } else { cout << " [failed] " << current_test_name << "\r\n"; 
   }
 }
 
