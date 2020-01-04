@@ -1,8 +1,10 @@
+move Makefile to ./test
 add auto-tests on new commit
-test library.properties
 test tests at Linux/MacOS
 more docs (installation, about logs, about status, is request successfull)
 write real tests
+setRetryCount, setRetryDelay
+add lib to Arduino Package Manager
 SMS send
 SMS recieve 
 set APN etc.
