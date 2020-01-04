@@ -51,7 +51,7 @@ Want to run unit tests on development box (not Arduino), and it is possible - th
 (tested on mingw-w64 at win10)
 
 ```sh
-make
+mingw32-make
 runtests.exe
 ```
 Resources:
