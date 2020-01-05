@@ -1,5 +1,5 @@
 #include <sys/timeb.h>
-#include "arduino.h"
+#include "Arduino.h"
 
 timeb t_start;
 unsigned long millis() {
