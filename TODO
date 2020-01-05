@@ -1,4 +1,3 @@
-add auto-tests on new commit
 more docs (installation, about logs, about status, is request successfull)
 write real tests
 setRetryCount, setRetryDelay
@@ -6,5 +5,5 @@ add lib to Arduino Package Manager
 SMS send
 SMS recieve 
 set APN etc.
-size?
+size? 0.3ram?!
 performance? (make waiting timings less)
