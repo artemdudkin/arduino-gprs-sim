@@ -1,6 +1,4 @@
-move Makefile to ./test
 add auto-tests on new commit
-test tests at Linux/MacOS
 more docs (installation, about logs, about status, is request successfull)
 write real tests
 setRetryCount, setRetryDelay
