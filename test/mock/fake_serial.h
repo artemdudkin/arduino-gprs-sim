@@ -1,6 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <cstring>
+using namespace std;
+#include <iomanip>
 
 class FakeSerial {
 public:

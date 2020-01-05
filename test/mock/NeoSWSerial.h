@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iostream>
+#include <cstring>
+using namespace std;
+
 typedef unsigned char __FlashStringHelper;
 
 typedef struct {
@@ -7,7 +11,6 @@ typedef struct {
 	const char *resp;
 } FlowItem;
 #define FLOW_SIZE 32
-
 #define SS_BUF_SIZE 64
 
 class NeoSWSerial

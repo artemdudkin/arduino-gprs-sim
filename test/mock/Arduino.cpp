@@ -1,4 +1,3 @@
-#include <sys/timeb.h>
 #include "Arduino.h"
 
 timeb t_start;

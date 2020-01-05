@@ -1,7 +1,9 @@
 #pragma once
 
 #include <stdlib.h>
-#include "mock/Arduino.h"
+#include <sys/timeb.h>
+#include <iostream>
+using namespace std;
 
 class Assert
 {
@@ -13,14 +15,14 @@ class Assert
     
     void test_start(const char*);
     void test_finish();
-    void test_results_and_quit();    
+    void print_results_and_quit();    
     
   private:    
     int assert_ok;
     int assert_total;
-    int test_time_start;
     bool current_test_ok;
     const char* current_test_name;
+    unsigned long test_time_start;
 };
 
 extern Assert assert;

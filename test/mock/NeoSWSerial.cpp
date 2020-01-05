@@ -1,9 +1,5 @@
 #include "NeoSWSerial.h"
 
-#include <iostream>
-#include <cstring>
-using namespace std;
-
 NeoSWSerial::NeoSWSerial(int pinRx, int pinTx){
   flow_current  = 0;
   flow_next     = 0;

@@ -1,8 +1,3 @@
-#include <cstring>
-#include <iostream>
-using namespace std;
-#include <iomanip>
-
 #include "fake_serial.h"
 
 void FakeSerial::begin(unsigned long speed) {

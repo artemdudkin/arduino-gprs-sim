@@ -1,5 +1,7 @@
 #pragma once
 
+#include <sys/timeb.h>
+
 #define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
 #define lowByte(w) ((unsigned char) ((w) & 0xff))
 #define highByte(w) ((unsigned char) ((w) >> 8))

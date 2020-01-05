@@ -1,7 +1,13 @@
 #include "assert.h"
 
-#include <iostream>
-using namespace std;
+unsigned long _millis() {
+  timeb t_now;
+  ftime(&t_now);
+  return t_now.time * 1000 + t_now.millitm;
+}
+
+
+
 
 Assert::Assert() {
   assert_ok       = 0;
@@ -11,8 +17,8 @@ Assert::Assert() {
 
 void Assert::test_start(const char *name){
   if (test_time_start == 0){
-    test_time_start = millis();
-//    cout << "\r\n"; // looks like it is not nessessary
+    test_time_start = _millis();
+    cout << "\r\n";
   }
   current_test_ok = true;
   current_test_name = name;
@@ -24,17 +30,14 @@ void Assert::test_finish(){
   }
 }
 
-void Assert::test_results_and_quit() {
+void Assert::print_results_and_quit() {
 	cout << "\r\n\r\n\tAsserts total: " << assert_total << ", passed: " << assert_ok;
 	if (assert_total != assert_ok) {
 		cout << ", FAILED:" << (assert_total - assert_ok);
 	}
-	cout << " [" << millis() - test_time_start << " ms]\r\n\r\n";
+	cout << " [" << _millis() - test_time_start << " ms]\r\n\r\n";
 	exit( assert_total == assert_ok ? EXIT_SUCCESS : EXIT_FAILURE );
 }
-
-
-
 
 
 
