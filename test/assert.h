@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdlib.h>
 #include "mock/arduino.h"
 
 class Assert
@@ -12,7 +13,7 @@ class Assert
     
     void test_start(const char*);
     void test_finish();
-    void test_results();    
+    void test_results_and_quit();    
     
   private:    
     int assert_ok;

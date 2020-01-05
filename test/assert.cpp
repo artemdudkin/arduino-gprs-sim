@@ -24,12 +24,13 @@ void Assert::test_finish(){
   }
 }
 
-void Assert::test_results(){
+void Assert::test_results_and_quit() {
 	cout << "\r\n\r\n\tAsserts total: " << assert_total << ", passed: " << assert_ok;
 	if (assert_total != assert_ok) {
 		cout << ", FAILED:" << (assert_total - assert_ok);
 	}
 	cout << " [" << millis() - test_time_start << " ms]\r\n\r\n";
+	exit( assert_total == assert_ok ? EXIT_SUCCESS : EXIT_FAILURE );
 }
 
 

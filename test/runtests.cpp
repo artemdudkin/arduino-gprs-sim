@@ -59,7 +59,7 @@ void test_gprs_start_ok() {
   g.setLog(false);
   g.setDebug(false);
   int status = g.start();
-  assert.equal(-1, status);
+  assert.equal(-2, status);
 }
 
 
@@ -71,5 +71,5 @@ int main(int argc, char **argv){
   START( test_gprs_start_no_AT_answer,  "gprs_start_no_AT_answer");
   START( test_gprs_start_ok,  "gprs_start_ok");  
 
-  assert.test_results();
+  assert.test_results_and_quit();
 }
