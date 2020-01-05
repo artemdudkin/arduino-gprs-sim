@@ -43,7 +43,7 @@ Serial.println((char*)buf); // print HTTP answer, something like
                             //  
 
 ```
-Also there are ./examples/Temperature folder with schematics and sketch for ds18b20 temperature sensor sending measurements by sim800l once a minute. 
+Also there is ./examples/Temperature folder with schematics and sketch for ds18b20 temperature sensor sending measurements by sim800l once a minute. 
 
 ## Tests
 
