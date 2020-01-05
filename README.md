@@ -48,9 +48,12 @@ Also there are ./example folder with schematics and sketch for ds18b20 temperatu
 
 Want to run unit tests on development box (not Arduino), and it is possible - thanks to [mvgrimes](https://github.com/mvgrimes/smartthings-super-sprinker) and [IronSavior](https://github.com/IronSavior/dsm2_tx).
 
-(tested on mingw-w64 at win10)
-
 ```sh
+# linux
+make
+./runtests
+
+# win 10 + mingw-w64
 mingw32-make
 runtests.exe
 ```
