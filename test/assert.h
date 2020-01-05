@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
-#include "mock/arduino.h"
+#include "mock/Arduino.h"
 
 class Assert
 {
