@@ -59,7 +59,7 @@ void test_gprs_start_ok() {
   g.setLog(false);
   g.setDebug(false);
   int status = g.start();
-  assert.equal(-2, status);
+  assert.equal(-1, status);
 }
 
 
