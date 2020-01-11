@@ -745,3 +745,74 @@ CME ERROR: 772	SIM powered down
 */
 
 
+//-----------------------------failed init (no sim)
+/*
+<< AT
+>> '
+OK
+'
+<< AT&F
+>> '
+OK
+'
+<< ATE0
+>> 'ATE0
+OK
+'
+<< AT+CMEE=1
+>> '
+OK
+'
+<< AT+CMGF=1
+>> '
++CME ERROR: 10
+'
+<< AT+CMGF=1
+>> '
++CME ERROR: 10
+'
+<< AT+CMGF=1
+>> '
++CME ERROR: 10
+'
+<< AT+CMGF=1
+>> '
++CME ERROR: 10
+'
+<< AT+CMGF=1
+>> '
++CME ERROR: 10
+'
+<< AT+CMGF=1
+>> '
++CME ERROR: 10
+'
+*/
+
+
+
+//-----------------------------init--ok-
+/*
+<< AT
+>> 'AT
+OK
+'
+<< AT&F
+>> 'AT&F
+OK
+'
+<< ATE0
+>> 'ATE0
+OK
+'
+<< AT+CMEE=1
+>> '
+OK
+'
+<< AT+CMGF=1
+>> '
+OK
+'
+*/
+
+
